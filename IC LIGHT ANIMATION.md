@@ -1,4 +1,4 @@
-﻿# IC Light Animation
+# IC Light Animation
 
 ## Table of Contents
 - [About the Workflow](#about-the-workflow)
@@ -25,7 +25,7 @@ This workflow leverages the innovative use of AI to control and manipulate light
 
 ## Overview
 
-![WORKFLOW](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/WORKFLOW.png)
+![WORKFLOW](WORKFLOW.png)
 
 ## How to Use This Workflow
 1. **Software Setup**: Use software like ComfyUI to install necessary nodes and models.
@@ -40,14 +40,14 @@ This workflow leverages the innovative use of AI to control and manipulate light
 
 ## Image to Image
 
-![input](JARVISLAB/DAY%204/MULTI%20IMG%20GIRL.jpg)
-![output](JARVISLAB/DAY%204/OUTPUT%20MULTIPLE%20IMG.png)
+![input](I1.jpg)
+![output](O1.png)
 
 ## Image to Video
 
 Here are examples of converting images to videos:
 
-![input](JARVISLAB/DAY%204/buddha.png)
+![input](IMAGE1.png)
 ![output](OUTPUT%20buddha.gif)
 
 ## Custom Nodes
@@ -94,4 +94,4 @@ Here is a summary of the custom nodes used in this workflow:
 
 Here is the JSON file containing the workflow setup:
 
-- [IC LIGHT ANIMATION WORKFLOW](JARVISLAB/DAY%204/IC%20LIGHT%20ANIMATION%20WORKING.json)
+- [IC LIGHT ANIMATION WORKFLOW](IC%20LIGHT%20ANIMATION%20WORKING.json)
