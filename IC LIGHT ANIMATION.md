@@ -25,7 +25,7 @@ This workflow leverages the innovative use of AI to control and manipulate light
 
 ## Overview
 
-![WORKFLOW](workflow.png)
+![WORKFLOW](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/workflow.png)
 
 ## How to Use This Workflow
 1. **Software Setup**: Use software like ComfyUI to install necessary nodes and models.
@@ -41,14 +41,14 @@ This workflow leverages the innovative use of AI to control and manipulate light
 ## Image to Image
 
 ![input](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/I1.jpg)
-![output](O1.png)
+![output](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/O1.png)
 
 ## Image to Video
 
 Here are examples of converting images to videos:
 
-![input](IMAGE1.png)
-![output](OUTPUT%20buddha.gif)
+![input](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/IMAGE1.png)
+![output](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/OUTPUT%20buddha.gif)
 
 ## Custom Nodes
 
@@ -94,4 +94,4 @@ Here is a summary of the custom nodes used in this workflow:
 
 Here is the JSON file containing the workflow setup:
 
-- [IC LIGHT ANIMATION WORKFLOW](IC%20LIGHT%20ANIMATION%20WORKING.json)
+- [IC LIGHT ANIMATION WORKFLOW](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/IC%20LIGHT%20ANIMATION%20WORKING.json)
