@@ -25,7 +25,7 @@ This workflow leverages the innovative use of AI to control and manipulate light
 
 ## Overview
 
-![WORKFLOW](WORKFLOW.png)
+![WORKFLOW](workflow.png)
 
 ## How to Use This Workflow
 1. **Software Setup**: Use software like ComfyUI to install necessary nodes and models.
