@@ -40,7 +40,7 @@ This workflow leverages the innovative use of AI to control and manipulate light
 
 ## Image to Image
 
-![input](I1.jpg)
+![input](https://github.com/Jenisa-Merlin/IC-LIGHT-ANIMATION/blob/main/I1.jpg)
 ![output](O1.png)
 
 ## Image to Video
