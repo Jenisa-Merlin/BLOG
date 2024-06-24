@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Text-to-Video Workflow with ComfyUI: An In-Depth Guide</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .download-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Creating Text-to-Video Workflows with ComfyUI: An In-Depth Guide</h1>
+
+    <h2>Introduction</h2>
+    <p>Hello, let me take you through a brief overview of text to video process using ComfyUI. It is recommended for new users to follow these steps outlined in this tutorial to set up the Animatediff Text-to-Video workflow and to operate them. ComfyUI lets you easily turn textual instructions into interesting videos without much time and effort. Let’s dive in!</p>
+
+    <h2>What is ComfyUI?</h2>
+    <p>ComfyUI is an effective application which aims at improving convenience when it comes to producing any form of multimedia, including videos. It has an interface that guides users in creating videos that are informative and interesting by using text-to-speech and text-to-video prompts, thus making it easier to create without necessarily having made a professional video. <a href="https://stable-diffusion-art.com/comfyui/">Learn more about ComfyUI</a>.</p>
+
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#1-overview-of-the-workflow">Overview of the Workflow</a></li>
+        <li><a href="#2-key-components">Key Components</a></li>
+        <li><a href="#3-workflow">Workflow</a></li>
+        <li><a href="#4-step-by-step-workflow-setup">Step-by-Step Workflow Setup</a></li>
+        <li><a href="#5-best-practices">Best Practices</a></li>
+        <li><a href="#6-custom-nodes">Custom Nodes</a></li>
+        <li><a href="#7-models">Models</a></li>
+        <li><a href="#8-troubleshooting-and-faqs">Troubleshooting and FAQs</a></li>
+        <li><a href="#9-conclusion">Conclusion</a></li>
+        <li><a href="#10-sample-prompt">Sample Prompt</a></li>
+        <li><a href="#11-sample-output">Sample Output</a></li>
+    </ol>
+
+    <h2 id="1-overview-of-the-workflow">1. Overview of the Workflow</h2>
+    <p>The Animatediff Text-to-Video workflow in ComfyUI allows you to generate videos based on textual descriptions. With this workflow, there are several nodes that take an input text, transform the text into frames to build the final video and output the frames as a video.
+    </p>
+
+    <h2 id="2-key-components">2. Key Components</h2>
+    <p>Here are the primary components of the workflow, as illustrated in the provided image:</p>
+    <ul>
+        <li><strong>Input Nodes</strong>: Define parameters such as the number of frames, width, and height of the video.</li>
+        <li><strong>Model Loading Nodes</strong>: Load necessary models for image generation and processing.</li>
+        <li><strong>Prompt Nodes</strong>: Manage the text prompts that guide the video generation.</li>
+        <li><strong>Animation Nodes</strong>: Handle the frame-by-frame animation generation.</li>
+        <li><strong>Output Nodes</strong>: Compile the generated frames into a video and output the final result.</li>
+    </ul>
+
+    <h2 id="3-workflow">3. Workflow</h2>
+    <p><img src="https://raw.githubusercontent.com/Jenisa-Merlin/BLOG/main/workflow.png" alt="Workflow Image"></p>
+    <p><a href="https://raw.githubusercontent.com/Jenisa-Merlin/BLOG/main/Workflow.json" class="download-button">Download Workflow JSON</a></p>
+
+    <h2 id="4-step-by-step-workflow-setup">4. Step-by-Step Workflow Setup</h2>
+    <p>Follow these steps to set up the Animatediff Text-to-Video workflow in ComfyUI:</p>
+    <ol>
+        <li><strong>Step 1: Define Input Parameters</strong><br>
+            Set the basic parameters for your video:<br>
+            - <strong>Number of Frames</strong>: Use the "Number of Frames" node to specify how many frames your video will have.<br>
+            - <strong>Width and Height</strong>: Use the respective nodes to set the dimensions of each frame.</li>
+        <li><strong>Step 2: Load Necessary Models</strong><br>
+            Load the models required for generating and processing images:<br>
+            - <strong>Load Checkpoint w/ Noise Select</strong>: Load the model checkpoint that will be used for generating frames.<br>
+            - <strong>Load VAE</strong>: Load the Variational Autoencoder (VAE) model for decoding.</li>
+        <li><strong>Step 3: Configure Prompts</strong><br>
+            Set up the textual prompts that will guide the video content:<br>
+            - <strong>Pre Text</strong>: Define initial text that will appear at the beginning of the video.<br>
+            - <strong>App Text</strong>: Additional text that can appear during the video.<br>
+            - <strong>Batch Prompt Schedule</strong>: Manage the sequence and timing of prompts throughout the video.</li>
+        <li><strong>Step 4: Set Up Animation Nodes</strong><br>
+            Configure the nodes responsible for creating the animation:<br>
+            - <strong>Animate Diff Nodes</strong>: Use these nodes to specify how the frames will transition and evolve based on the text prompts.<br>
+            - <strong>Context Options and Looped Uniform</strong>: Set the context and looping options for smooth transitions.</li>
+        <li><strong>Step 5: Generate and Compile Video</strong><br>
+            Finalize the video generation and compilation process:<br>
+            - <strong>KSampler</strong>: Sample the latent space to create detailed frames.<br>
+            - <strong>VAE Decode</strong>: Decode the latent representations into images.<br>
+            - <strong>Animation Diff Combine</strong>: Compile the generated frames into a video file.</li>
+    </ol>
+
+    <h2 id="5-best-practices">5. Best Practices</h2>
+    <ul>
+        <li><strong>Optimize Parameters</strong>: Experiment with different parameters to find the best settings for your specific use case.</li>
+        <li><strong>Modular Design</strong>: Keep your workflow modular to facilitate easier updates and maintenance.</li>
+        <li><strong>Documentation</strong>: Document each node’s configuration for future reference and troubleshooting.</li>
+    </ul>
+
+    <h2 id="6-custom-nodes">6. Custom Nodes</h2>
+    <p>The following custom nodes are used in this workflow:</p>
+    <ul>
+        <li><strong>Animate Diff Nodes</strong>: These nodes manage the frame-by-frame animation based on text prompts.</li>
+        <li><strong>Batch Prompt Schedule</strong>: This node helps in managing the sequence and timing of the prompts throughout the video.</li>
+        <li><strong>Load Checkpoint w/ Noise Select</strong>: Loads the model checkpoint used for generating frames with noise selection.</li>
+        <li><strong>VAE Decode</strong>: Decodes the latent representations into images.</li>
+    </ul>
+
+    <h2 id="7-models">7. Models</h2>
+    <p>The following models are used in this workflow:</p>
+    <ul>
+        <li><strong>Load Checkpoint w/ Noise Select</strong>: Uses a model checkpoint, such as <code>majicmix_real_v6.safetensors</code>, which is essential for generating the video frames.</li>
+        <li><strong>Load VAE</strong>: Uses the <code>vae-ft-mse-840000-ema-pruned.ckpt</code> model, which is crucial for decoding the latent representations into images.</li>
+    </ul>
+
+    <h2 id="8-troubleshooting-and-faqs">8. Troubleshooting and FAQs</h2>
+    <h3>Common Issues</h3>
+    <ul>
+        <li><strong>Frames Not Generating Properly</strong>: Ensure that all model paths are correctly set and that the models are compatible with the input dimensions.</li>
+        <li><strong>Video Compilation Errors</strong>: Check the output node settings and ensure that all frames are correctly processed.</li>
+    </ul>
+    <h3>FAQs</h3>
+    <ul>
+        <li><strong>How do I update the models?</strong><br>
+            Regularly check for updates from the model providers and follow the update instructions specific to ComfyUI.</li>
+        <li><strong>Can I customize the text prompts dynamically?</strong><br>
+            Yes, use the Batch Prompt Schedule node to dynamically change prompts based on the frame index or other conditions</li>
+    </ul>
+      
+    <h2 id="9-conclusion">9. Conclusion</h2>
+    <p>By following this guide, you should now be equipped to create your own text-to-video workflows using ComfyUI. This powerful tool can help you automate the process of video content creation, saving you time and effort while allowing for a high degree of customization. Happy creating!</p>
+
+    <h2 id="10-sample-prompt">10. Sample Prompt</h2>
+    <p><strong>Pre Text</strong>: (Masterpiece, best quality:1.2), full body shot,</p>
+
+    <p><strong>App Text</strong>: natural bright lighting, sharp, highly detailed, ultra hyperrealistic, 4k, vibrant</p>
+
+    <p><strong>Batch Prompt</strong>:</p>
+    <ul>
+        <li>"0" : "Young man, early 20s, sitting in college lecture hall, attentive expression",</li>
+        <li>"25" : "Man taking notes, surrounded by other students, lecture hall background",</li>
+        <li>"50" : "Man walking through college campus, backpack on, autumn scenery",</li>
+        <li>"75" : "Man enters college library, looks around curiously",</li>
+        <li>"100" : "Man browsing bookshelves, fingers tracing book spines",</li>
+        <li>"125" : "Woman enters library, carrying stack of books",</li>
+        <li>"150" : "Man and woman reach for same book, hands touch, surprised expressions",</li>
+        <li>"175" : "Close-up of man and woman's eyes meeting, soft smiles forming",</li>
+        <li>"200" : "Man and woman chatting at library table, books spread out",</li>
+        <li>"225" : "Couple walking together on campus path, golden hour lighting",</li>
+        <li>"250" : "Couple having picnic in park, laughing, feeding each other strawberries",</li>
+        <li>"275" : "Couple studying together in dorm room, comfortable closeness",</li>
+        <li>"300" : "Couple on coffee date, sitting close in cafe, holding hands",</li>
+        <li>"325" : "Couple at college party, dancing together, joyful expressions",</li>
+        <li>"350" : "Couple kissing under tree on campus, romantic mood",</li>
+        <li>"375" : "Couple in graduation gowns, holding diplomas, proud smiles",</li>
+        <li>"400" : "Couple moving into first apartment, carrying boxes together",</li>
+        <li>"425" : "Man proposing on one knee, woman surprised and emotional",</li>
+        <li>"450" : "Couple at altar, exchanging rings, surrounded by loved ones",</li>
+        <li>"475" : "Couple on honeymoon, walking on beach at sunset, holding hands",</li>
+        <li>"500" : "Couple in their new home, cuddling on couch, looking at photo album of their journey"</li></ul>
+
+    <p><strong>Negative Prompt</strong>: darkness, shadow, close up, head shot, (bad quality, worst quality:1.2), NSFW, nude, noisy, blurry, deformed, black and white, bad anatomy, deformed, bad eyes, crossed eyes, disfigured, poorly drawn face, mutation, ((extra limb)), ugly, poorly drawn hands, missing limb, floating limbs, disconnected limbs, malformed hands, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame ))), cropped, low-res, ugly, too many fingers, grainy, extra limbs, extra fingers, mutated hands, bad proportions, blind, ugly eyes, text, writing, logo</p>
+
+    <h2 id="11-sample-output">11. Sample Output</h2>
+    <p><a href="https://raw.githubusercontent.com/Jenisa-Merlin/BLOG/main/OUTPUT.gif" class="download-button">SAMPLE OUTPUT</a></p>
+
+</body>
+</html>
